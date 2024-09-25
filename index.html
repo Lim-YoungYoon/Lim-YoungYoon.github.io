@@ -1,92 +1,871 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <title>당신의 이름 - 개발자 포트폴리오</title>
+    <title>Lim-YoungYoon - Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 스타일을 추가하거나 CSS 프레임워크를 사용할 수 있습니다 -->
     <style>
         body {
             font-family: 'Noto Sans KR', sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+            background-color: #e2e2e2;
         }
-        header, footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 1em 0;
+
+        header,
+        section,
+        footer {
+            padding: 60px 20px;
             text-align: center;
         }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(51, 51, 51, 0.8);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
         nav a {
-            margin: 0 1em;
-            color: #ecf0f1;
+            color: white;
+            margin: 0 15px;
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
         }
-        .container {
-            padding: 2em;
+
+        nav a:hover {
+            color: #ffcc00;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
+
+        /* 프로필 헤더 스타일 */
+        .profile-header {
+            background-color: #f4f4f4;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
         }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #333;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 프로필 정보 h1 스타일 */
+        .profile-info h1 {
+            font-size: 32px;
+            margin: 0;
+            color: #222;
+            /* 더 진한 색상 적용 (기본 검정보다 약간 더 진한 색) */
+            font-weight: bold;
+            /* 폰트 굵기를 더욱 강조 */
+        }
+
+
+        .profile-info p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* About 섹션 스타일 */
+        .about-section {
+            padding: 30px 20px;
+            background-color: #ffffff00;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .about-section p:last-child {
+            margin-bottom: 0;
+        }
+
+
+
+        section {
+            min-height: 20vh;
+            padding-top: 50px;
+        }
+
+        #about {
+            background-color: #e2e2e2;
+        }
+
+        #projects {
+            background-color: #e2e2e2;
+        }
+
+        #contact {
+            background-color: #e2e2e2;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+        }
+
+        #about img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 20px;
+        }
+
         .project {
-            margin-bottom: 2em;
+            margin: 40px 0;
+            background-color: #e2e2e2;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .project img {
-            max-width: 100%;
+
+        /* GIF 이미지 */
+        .gif-container {
+            width: 10%;
+            margin-bottom: 20px;
+        }
+
+        .video-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 45%;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 30vh;
+            /* 비율을 30으로 조정 */
+            border-radius: 8px;
+        }
+
+        .video-container button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .video-container button.hidden {
+            display: none;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        .project-text {
+            text-align: left;
+        }
+
+        .video-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 48%;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .video-container button.hidden {
+            display: none;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 300px;
+            /* 고정된 높이로 설정 */
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 프로젝트 카드 */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 900px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* 텍스트 섹션 */
+        .project-text {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        /* 이미지 사이에 간격 추가 */
+        .image-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            /* 상단 간격 */
+            margin-bottom: 60px;
+            /* 하단 간격 추가 */
+        }
+
+        .horizontal {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .vertical-images {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .vertical-images img {
+            width: 48%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .large-image-container {
+            width: 60%;
+        }
+
+        .large-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container-horizontal {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-container-horizontal img {
+            width: 48%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 이미지 컬럼 */
+        .image-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .image-column img {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 메타버스 프로젝트 카드 */
+        .metaverse-project-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* 텍스트 섹션 */
+        .metaverse-project-text {
+            text-align: left;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* 스크린샷 이미지 */
+        .metaverse-screenshot-container {
+            width: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .metaverse-screenshot-container img {
+            width: 50%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 이미지 그리드 (2x2) */
+        .metaverse-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 10px;
+        }
+
+        .metaverse-image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* AR Shop 프로젝트 카드 전용 스타일 */
+        .arshop-project-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* AR Shop 프로젝트 텍스트 */
+        .arshop-project-text {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        /* 이미지 그리드 */
+        .arshop-image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 두 개의 이미지를 한 줄에 배치 */
+            grid-gap: 5px;
+            /* 이미지 사이의 간격 설정 */
+            margin-top: 1px;
+        }
+
+        /* 이미지 스타일 */
+        .arshop-image-grid img {
+            width: 90%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 경험 섹션 스타일 */
+        .experience-section {
+            padding: 60px 20px;
+            background-color: #ffffff00;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .experience-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* 경험 아이템 스타일 */
+        .experience-item {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .experience-item h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .experience-item p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .experience-item ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .experience-item ul li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        /* 리스트 아이템 마지막 항목에 마진 제거 */
+        .experience-item ul li:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>당신의 이름</h1>
     <nav>
         <a href="#about">소개</a>
         <a href="#projects">프로젝트</a>
+        <a href="#experience">관련활동</a>
         <a href="#contact">연락처</a>
     </nav>
-</header>
 
-<div class="container">
+    <header class="profile-header">
+        <div class="profile-container">
+            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEQncnXfVCeSg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1723979415508?e=1732752000&v=beta&t=QjNhKOL17lJGDr6W0YOY8zWncrYBwnihLe4RDr22mdI"
+                alt="Profile Image" class="profile-image" />
+            <div class="profile-info">
+                <h1>Lim-YoungYoon</h1>
+                <p>AI LLM Developer</p>
+            </div>
+        </div>
+    </header>
 
-    <section id="about">
-        <h2>소개</h2>
-        <p>자신에 대한 간략한 소개를 여기에 작성하세요. 배경, 기술 및 관심 분야 등을 포함할 수 있습니다.</p>
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <p>Hello, I’m an AI developer focused on building conversational AI systems and healthcare solutions. I’m
+            passionate about utilizing RAG-based information retrieval technologies and large-scale language models to
+            enhance user experiences through chatbots and personalized AI systems.</p>
+        <p>I have led AI chatbot development projects aimed at addressing healthcare challenges and have experience
+            designing systems that deliver customized conversations for diverse user groups.</p>
     </section>
+
 
     <section id="projects">
-        <h2>프로젝트</h2>
-
-        <div class="project">
-            <h3>프로젝트 제목 1</h3>
-            <img src="프로젝트_이미지_링크.jpg" alt="프로젝트 이미지">
-            <p>프로젝트에 대한 간단한 설명을 작성하세요.</p>
-            <p><a href="https://github.com/yourusername/project1">GitHub에서 보기</a></p>
+        <h2>Projects</h2>
+        <!-- un-doc 프로젝트 -->
+        <div class="project-card">
+            <div class="project-text">
+                <h3>un-doc (2024.09 - present)</h3>
+                <p>South Korea is currently facing a healthcare crisis due to a shortage of specialists in tertiary
+                    hospitals and other advanced medical institutions, a situation further aggravated by the ongoing
+                    doctors' strike. In response, we developed a chatbot that utilizes a large-scale AI healthcare Q&A
+                    dataset. This chatbot is built on a large-scale AI model incorporating expert knowledge from the
+                    healthcare field, enabling patients to receive prompt and accurate information.</p>
+                <p>The chatbot employs a Retrieval-Augmented Generation (RAG) system and Domain-Specific Fine-tuning
+                    (DSF) with Gemma-2-2b-it. RAG leverages hybrid search techniques to enhance information retrieval,
+                    ensuring improved accuracy and relevance.</p>
+                <p>Though still a work in progress, we are continuously updating and refining the system.</p>
+                <p><strong>Demo:</strong> <a href="https://undoc.vercel.app"
+                        target="_blank">https://undoc.vercel.app</a></p>
+                <p><strong>Technologies Used:</strong> Python, Pytorch, Huggingface, Gemma-2-2b-it, Pinecone, Langchain,
+                    Next.js, OpenAI API, BGE-M3, FastAPI, Prompt Engineering</p>
+            </div>
+            <div class="image-row">
+                <div class="image-container">
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/undoc/1.png"
+                        alt="Horizontal image" />
+                </div>
+                <div class="vertical-images">
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/undoc/2-%EC%88%98%EC%A0%95.png"
+                        alt="Vertical image 1" />
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/undoc/3-%EC%88%98%EC%A0%95.png"
+                        alt="Vertical image 2" />
+                </div>
+            </div>
         </div>
 
-        <div class="project">
-            <h3>프로젝트 제목 2</h3>
-            <img src="프로젝트_이미지_링크.jpg" alt="프로젝트 이미지">
-            <p>프로젝트에 대한 간단한 설명을 작성하세요.</p>
-            <p><a href="https://github.com/yourusername/project2">GitHub에서 보기</a></p>
+
+        <!-- 패션 코디 추천 챗봇 연구 -->
+        <div class="project-card">
+            <div class="project-text">
+                <h3>패션 코디 추천 챗봇 연구 (2024.01 - 2024.07)</h3>
+                <p>본 연구에서는 RAG 시스템과 다중출처효과를 적용하여 패션 코디 추천 챗봇을 개발하고 평가하였습니다. 기존의 전자상거래 플랫폼은 주로 단일 챗봇과의 상호작용을 기반으로 운영되지만,
+                    본
+                    연구는 다중 챗봇을 활용한 상호작용이 더 나은 사용자 경험을 제공할 수 있는지 탐구하였습니다.</p>
+                <p>이를 위해 세 개의 챗봇이 사용자의 요청을 처리하는 다중 상호작용 시스템을 설계하고, 사용자 만족도, 사용 용이성, 유용성, 신뢰도 및 대화 참여 의사와 같은 다양한 측면에서 단일
+                    챗봇
+                    시스템과 비교 평가를 진행하였습니다. 연구 결과, 다중 챗봇 시스템이 사용자 만족도와 유용성에서 더 긍정적인 평가를 받았으며, 특히 사용자가 더욱 신뢰할 수 있는 시스템으로
+                    인식되었습니다. 다만, 친밀감과 개인화된 경험 제공 측면에서는 유의미한 차이가 나타나지 않았습니다.</p>
+                <p><strong>Technologies Used:</strong> GPT-4 API, Chroma DB (벡터 DB), Streamlit, Prompt Engineering, Data
+                    Crawling</p>
+            </div>
+            <div class="image-row">
+                <div class="image-container-horizontal">
+                    <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/%EB%8B%A4%EC%A4%91%EC%B6%9C%EC%B2%98/3.png?raw=true"
+                        alt="Horizontal image 1" />
+                    <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/%EB%8B%A4%EC%A4%91%EC%B6%9C%EC%B2%98/2.png?raw=true"
+                        alt="Horizontal image 2" />
+                </div>
+                <div class="large-image-container">
+                    <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/%EB%8B%A4%EC%A4%91%EC%B6%9C%EC%B2%98/1.png?raw=true"
+                        alt="Large image" />
+                </div>
+            </div>
         </div>
 
-        <!-- 필요한 만큼 프로젝트를 추가하세요 -->
+        <!-- ART QR Code 연구 -->
+        <div class="project-card">
+            <div class="project-text">
+                <h3>ART QR Code Generator 연구 (2023.09 - 2023.12)</h3>
+                <p>본 연구는 QR 코드를 예술적 매체로 재해석하는 새로운 방법론을 탐구합니다. 기존 연구들이 QR 코드의 실용성과 예술성 사이의 균형을 맞추지 못한 반면, 본 연구는 QR 코드의 본
+                    기능을
+                    유지하면서도 시각적 매력과 예술적 가치를 통합하는 접근법을 제안합니다.</p>
+                <p>이를 위해, 기존 QR 코드 및 이미지 생성 기술을 결합하여 'ART QR Code Generator'를 제안하였으며, 이는 예술적이면서도 실제로 인식 가능한 QR 코드를 생성하는
+                    데
+                    성공하였습니다. 본 연구는 디지털 이미지 제작 및 디자인 분야에 새로운 지평을 열며, QR 코드를 단순한 정보 전달 도구를 넘어 예술적 표현의 수단으로 변화시키는 데 중요한 기여를
+                    합니다.</p>
+                <p>이를 통해 예술과 기술의 융합을 통한 창의적인 창작물의 발전 가능성을 높이는 데 기여하고 있습니다.</p>
+                <p><strong>Technologies Used:</strong> Stable Diffusion, automatic web ui, prompt engineering
+            </div>
+            <div class="image-row">
+                <div class="image-container-horizontal">
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/QR/1.png"
+                        alt="QR Code Artwork 1" />
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/QR/2.png"
+                        alt="QR Code Artwork 2" />
+                </div>
+            </div>
+        </div>
 
+        <!-- ChatGPT를 사용한 자동 프롬프트 최적화 연구 -->
+        <div class="project-card">
+            <div class="project-text">
+                <h3>ChatGPT를 사용한 자동 프롬프트 최적화: 태그 확장 및 Stable Diffusion을 통한 이미지 생성의 새로운 접근법 (2023.07 - 2023.08)</h3>
+                <p>본 논문은 태그 기반의 정보 검색을 향상시키고, 이미지 생성을 더 정확하고 효과적으로 수행하기 위한 새로운 접근법을 제안한다. 먼저, ELECTRA와 ChatGPT를 통합하여 주어진
+                    태그와
+                    관련된 태그를 자동으로 확장하며, 이를 사용자의 입력과 통합한다.</p>
+                <p>다음으로, 이 확장된 태그 세트를 이용하여 Stable Diffusion 모델로 이미지를 생성한다. 생성된 이미지는 'ImageReward' 모델로 평가되어 생성 품질을 정량적으로
+                    측정한다. 실험 결과, 제안된 방법은 기존 태그만을 사용하는 방법에 비해 더 다양하고 관련성 높은 이미지를 생성함을 확인하였다.</p>
+                <p>본 연구는 태그의 벡터 임베딩, 유사 태그 분석, 이미지 생성 및 평가의 과정을 통해 이미지 생성 작업을 자동화하고 최적화하는 새로운 방법론을 제시하며, 이는 텍스트에서 이미지로의
+                    전환을
+                    평가하고 개선하는 분야에 유의미한 기여를 할 것으로 예상된다.</p>
+                <p><strong>Technologies Used:</strong> ELECTRA, ChatGPT, Stable Diffusion</p>
+            </div>
+            <div class="image-row">
+                <div class="image-container-horizontal">
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/prompt/1.png"
+                        alt="Generated Image 1" />
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/prompt/2.png"
+                        alt="Generated Image 2" />
+                </div>
+            </div>
+        </div>
+
+        <!-- 메타버스 커뮤니케이션 서비스 연구 -->
+        <div class="metaverse-project-card">
+            <div class="metaverse-project-text">
+                <h3>메타버스 커뮤니케이션 서비스 (2022.06 - 2023.10)</h3>
+                <p>본 프로젝트는 <strong>메타버스 융합 대학원 정부 과제</strong>의 일환으로 진행되었으며, 가상공간에서 대화 생성 모델을 활용한 음성 커뮤니케이션 서비스와 방법을
+                    고안하여,
+                    사용자 간의 몰입도 높은 상호작용을 가능하게 하는 것을 목적으로 합니다. 사용자는 음성 대화를 통해 자연스럽게 상호작용하며, 이 과정에서 몰입감을 극대화하여 메타버스 내에서 실시간
+                    대화
+                    경험을 제공합니다.</p>
+                <p><strong>성과</strong>: 서강융합기술경진대회 우수상, 특허 출원 (10-2023-0133463)</p>
+                <p><strong>사용 기술</strong>: Unity, C#, Python, KoGPT2, ResNet, Google API</p>
+            </div>
+
+            <div class="metaverse-image-row">
+                <!-- GIF 대신 스크린샷 이미지 -->
+                <div class="metaverse-screenshot-container">
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/meta/5.PNG"
+                        alt="Screenshot" />
+                </div>
+
+                <!-- 2x2 이미지 그리드 -->
+                <div class="metaverse-image-grid">
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/meta/1.PNG"
+                        alt="Image 1" />
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/meta/2.PNG"
+                        alt="Image 2" />
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/meta/3.PNG"
+                        alt="Image 3" />
+                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/meta/4.PNG"
+                        alt="Image 4" />
+                </div>
+            </div>
+        </div>
+
+
+        <!-- XR 디바이스 콘텐츠 아이디어 경진대회 -->
+        <div class="project-card">
+            <div class="project-text">
+                <h3>XR 디바이스 콘텐츠 아이디어 경진대회 (2022.10 - 2022.11)</h3>
+                <p>메타버스 프로젝트 워크샵에서 얻은 소통과 협업을 기반으로 ‘XR글라스로 1인칭 플레이 시점에서 악기를 인식해 원하는 음악을 선택하면 자동으로 운지법과 연주법을 표시해주는 콘텐츠
+                    제공. 이를 메타버스와 결합해 <strong>밴드 결성</strong> 및 자유로운 밴드 연주가 가능한 <strong>커뮤니티 서비스</strong>로 확장.’이라는 서비스를 제안
+                    및 프로토타입을 개발하여 해당 대회에 참여하여 좋은 성과를 얻었습니다.</p>
+                <p><strong>Related Article:</strong> <a href="https://www.sogang.ac.kr/ko/detail/542329"
+                        target="_blank">Sogang University Article</a></p>
+            </div>
+            <div class="image-row">
+                <div class="image-container-horizontal">
+                    <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/XR/1.png?raw=true"
+                        alt="XR Device Project Image 1" />
+                    <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/XR/2.png?raw=true"
+                        alt="XR Device Project Image 2" />
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 4876 프로젝트 (이미 포함된 코드) -->
+        <div class="project-card">
+            <div class="project-text">
+                <h3>4876 (2021.6 - 2022.8)</h3>
+                <p><strong>중소벤처기업부</strong>: 2021년 생애최초 청년창업 지원 사업 선정</p>
+                <ul>
+                    <li><strong>연남동 AR 스튜디오</strong>: 2명의 사진작가와 함께 창업, 고객에게 혁신적인 AR 경험을 제공하는 포토 스튜디오 운영.</li>
+                    <li><strong>AR 구현</strong>: <em>ar.js</em>를 사용하여 AR 기능을 개발하고 사용자 경험을 향상.</li>
+                    <li><strong>개인 URL 배포</strong>: 관리 페이지와 사용자 인터페이스를 구축하여 고객이 온라인에서 자신의 사진을 확인하고 상호작용할 수 있도록 개인 URL 배포
+                        기능 개발.</li>
+                    <li><strong>기술 스택</strong>: <em>Node.js</em>와 <em>MySQL</em>을 사용해 사용자 데이터와 AR 자산을 관리하는 백엔드 시스템을 구현.
+                    </li>
+                </ul>
+            </div>
+            <div class="video-row">
+                <div class="video-container">
+                    <video id="video1" muted>
+                        <source
+                            src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/4876/4876_1.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button id="play-button1">Play</button>
+                </div>
+                <div class="video-container">
+                    <video id="video2" muted>
+                        <source
+                            src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/4876/4876_2.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button id="play-button2">Play</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- AR Shop -->
+        <div class="arshop-project-card">
+            <div class="arshop-project-text">
+                <h3>AR Shop (2020.08-2020.12)</h3>
+                <p>Used augmented reality to create an effect similar to what you actually wore.</p>
+                <p>AR Service: <strong>Main, Product, Cart</strong></p>
+                <p><strong>Technologies Used:</strong></p>
+                <ul>
+                    <li>Flutter 1.12.13</li>
+                    <li>Dart 2.7.2</li>
+                    <li>ARCore Unity SDK v1.17.0</li>
+                    <li>Firebase</li>
+                </ul>
+            </div>
+            <div class="arshop-image-grid">
+                <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/AR/1.png?raw=true"
+                    alt="AR Shop Image 1" />
+                <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/AR/2.png?raw=true"
+                    alt="AR Shop Image 2" />
+                <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/AR/3.png?raw=true"
+                    alt="AR Shop Image 3" />
+                <img src="https://github.com/Lim-YoungYoon/Lim-YoungYoon.github.io/blob/main/AR/4.png?raw=true"
+                    alt="AR Shop Image 4" />
+            </div>
+        </div>
     </section>
+
+    <section id="experience" class="experience-section">
+        <h2>Experience</h2>
+
+        <!-- Google Machine Learning Bootcamp -->
+        <div class="experience-item">
+            <h3>Google Machine Learning Bootcamp</h3>
+            <p>2024.07 - 2024.10</p>
+            <p><strong>수료</strong></p>
+            <ul>
+                <li>Gemma Sprint: Korea HealthCare chatbot</li>
+                <li>Kaggle 세션: Playground Competitions 3% 이내</li>
+                <li>Coursera 세션: Deep Learning Specialization 수료</li>
+            </ul>
+        </div>
+
+        <!-- LG AI연구원 프리랜서 -->
+        <div class="experience-item">
+            <h3>LG AI연구원 프리랜서 (Vision Lab)</h3>
+            <p>2023.07 - 2023.08</p>
+            <p>LG AI연구원 내 Vision Lab에서 2개월 동안 프리랜서로 근무하며, 초거대 생성형 AI인 엑사원(EXAONE) 모델의 프롬프트 엔지니어링을 담당했습니다. 주요 업무는 다음과
+                같습니다:</p>
+            <ul>
+                <li>엑사원(EXAONE) 모델을 사용하여 다양한 이미지를 생성하고, 입력된 프롬프트에 따라 생성되는 이미지의 품질을 평가</li>
+                <li>프롬프트의 입력 방식에 따른 이미지 생성 결과를 분석하여 최적의 프롬프트를 설계 및 개선</li>
+                <li>사용자 요구 사항을 반영한 맞춤형 프롬프트 개발</li>
+                <li>팀과 협력하여 엑사원(EXAONE) 모델의 정확성과 효율성 향상 방안 모색</li>
+            </ul>
+        </div>
+
+        <!-- LG Aimers -->
+        <div class="experience-item">
+            <h3>LG Aimers 2기</h3>
+            <p>2023.01 - 2023.02</p>
+            <p><strong>수료</strong></p>
+            <ul>
+                <li>교육명: LG Aimers / Data Intelligence</li>
+                <li>해커톤 주제: 스마트 공장 제품 품질 상태 분류</li>
+            </ul>
+        </div>
+
+        <!-- 청년취업사관학교 -->
+        <div class="experience-item">
+            <h3>청년취업사관학교</h3>
+            <p>2022.06 - 2022.09</p>
+            <p><strong>수료</strong></p>
+            <ul>
+                <li>교육명: Pytorch 기반의 실전 딥러닝 과정</li>
+            </ul>
+        </div>
+    </section>
+
+
 
     <section id="contact">
-        <h2>연락처</h2>
-        <p>이메일: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">yourprofile</a></p>
-        <!-- 다른 연락 방법이나 소셜 미디어 링크를 추가할 수 있습니다 -->
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:dla123dbs@naver.com">dla123dbs@naver.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/%EC%98%81%EC%9C%A4-%EC%9E%84-118330322/"
+                target="_blank">https://www.linkedin.com/in/영윤-임-118330322/</a></p>
     </section>
 
-</div>
+    <footer>
+        <p>&copy; 2024 Lim-YoungYoon</p>
+    </footer>
 
-<footer>
-    <p>&copy; 2023 당신의 이름</p>
-</footer>
+    <script>
+        const video1 = document.getElementById('video1');
+        const playButton1 = document.getElementById('play-button1');
+
+        playButton1.addEventListener('click', function () {
+            video1.play();
+            playButton1.classList.add('hidden');
+        });
+
+        video1.addEventListener('click', function () {
+            if (video1.paused) {
+                video1.play();
+                playButton1.classList.add('hidden');
+            } else {
+                video1.pause();
+                playButton1.classList.remove('hidden');
+            }
+        });
+
+        video1.addEventListener('ended', function () {
+            playButton1.classList.remove('hidden');
+        });
+
+        const video2 = document.getElementById('video2');
+        const playButton2 = document.getElementById('play-button2');
+
+        playButton2.addEventListener('click', function () {
+            video2.play();
+            playButton2.classList.add('hidden');
+        });
+
+        video2.addEventListener('click', function () {
+            if (video2.paused) {
+                video2.play();
+                playButton2.classList.add('hidden');
+            } else {
+                video2.pause();
+                playButton2.classList.remove('hidden');
+            }
+        });
+
+        video2.addEventListener('ended', function () {
+            playButton2.classList.remove('hidden');
+        });
+    </script>
 
 </body>
+
 </html>
