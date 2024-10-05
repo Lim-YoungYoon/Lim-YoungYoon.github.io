@@ -529,28 +529,84 @@
         <!-- un-doc 프로젝트 -->
         <div class="project-card">
             <div class="project-text">
-                <h3>un-doc (2024.09 - present)</h3>
-                <p>South Korea is currently facing a healthcare crisis due to a shortage of specialists in tertiary
-                    hospitals and other advanced medical institutions, a situation further aggravated by the ongoing
-                    doctors' strike. In response, we developed a chatbot that utilizes a large-scale AI healthcare Q&A
-                    dataset. This chatbot is built on a large-scale AI model incorporating expert knowledge from the
-                    healthcare field, enabling patients to receive prompt and accurate information.</p>
-                <p>The chatbot employs a Retrieval-Augmented Generation (RAG) system and Domain-Specific Fine-tuning
-                    (DSF) with Gemma-2-2b-it. RAG leverages hybrid search techniques to enhance information retrieval,
-                    ensuring improved accuracy and relevance.</p>
-                <p>Though still a work in progress, we are continuously updating and refining the system.</p>
-                <p><strong>Demo:</strong> <a href="https://undoc.vercel.app"
-                        target="_blank">https://undoc.vercel.app</a></p>
-                <p><strong>model:</strong> <a href="https://huggingface.co/devlim/Korea-HealthCare-RAFT-float16"
-                        target="_blank">https://huggingface.co/devlim/Korea-HealthCare-RAFT-float16</a></p>
-                <p><strong>Technologies Used:</strong> Python, Pytorch, Huggingface, Gemma-2-2b-it, Pinecone, Langchain,
-                    Next.js, OpenAI API, BGE-M3, FastAPI, Prompt Engineering</p>
+                <h1><strong>언닥(Undoc): 언제 어디서든 닥터 (2024.09)</strong></h1>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    구글 머신러닝 부트캠프에서 수행한 프로젝트로, 대규모 언어 모델인
+                    <strong>Gemma</strong>를 활용하여 의료 상담 시스템을 개발. 이 프로젝트는
+                    대규모 헬스케어 데이터셋을 기반으로 사용자가 신뢰성 있는 의료 정보를
+                    언제 어디서든 얻을 수 있도록 돕는 플랫폼 구축을 목표로 하였습니다.
+                </p>
+                <div class="image-row">
+                    <div class="image-container">
+                        <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/undoc/1.png"
+                            alt="Horizontal image" />
+                    </div>
+                </div>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
+                <ul>
+                    <li><strong>프로젝트 리드 및 AI 서비스 개발</strong></li>
+                    <ul>
+                        <li><strong>데이터 처리 및 증강</strong>
+                            <ul>
+                                <li>AI-Hub의 대규모 헬스케어 데이터셋 전처리 및 데이터 증강을 통해 의료 QA 데이터셋 구축.</li>
+                            </ul>
+                        </li>
+                        <li><strong>모델 개발 및 튜닝</strong>
+                            <ul>
+                                <li>Gemma 모델을 헬스케어 데이터셋에 맞게 <strong>Instruction Tuning</strong>.</li>
+                                <li><strong>RAFT 연구 논문</strong>을 바탕으로 <strong>RAG 시스템</strong>에 최적화된 파인튜닝 진행.</li>
+                            </ul>
+                        </li>
+                        <li><strong>시스템 아키텍처 설계 및 구현</strong>
+                            <ul>
+                                <li><strong>BGE-M3 임베딩 모델</strong>을 사용하여 <strong>Pinecone Vector DB</strong>에 데이터 임베딩.
+                                </li>
+                                <li><strong>하이브리드 검색 알고리즘</strong>을 구현하여 검색 성능 향상.</li>
+                                <li><strong>LangChain 프레임워크</strong>를 활용해 모델 파이프라인 설계.</li>
+                            </ul>
+                        </li>
+                        <li><strong>서비스 구축 및 최적화</strong>
+                            <ul>
+                                <li><strong>FastAPI</strong>를 사용하여 API 서비스 개발.</li>
+                                <li>양자화 모델 학습을 통해 모델의 경량화 및 성능 최적화.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>언어 및 플랫폼</strong>: Python, Pytorch, Ubuntu</li>
+                    <li><strong>임베딩 모델</strong>: BGE-M3</li>
+                    <li><strong>데이터베이스</strong>: Pinecone Vector DB</li>
+                    <li><strong>프레임워크 및 라이브러리</strong>: LangChain, FastAPI</li>
+                    <li><strong>기타 기술</strong>: 데이터 전처리 및 증강 기법, 하이브리드 검색 알고리즘, Quantization, RAFT 연구 논문 분석</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>모델 성능 향상</strong>: 기존 시스템 대비 <strong>정답 유사도 16%</strong> 성능 향상.</li>
+                    <li><strong>우수한 검색 성능</strong>: 하이브리드 검색을 적용한 <strong>RAG 시스템</strong>이
+                        <strong>context_precision</strong>과 <strong>context_utilization</strong>에서 일관되게 1.0의 높은 점수를 기록.
+                    </li>
+                </ul>
+
+                <h3><strong>한계점 및 향후 방향</strong></h3>
+                <ul>
+                    <li><strong>데이터셋의 한계</strong>: 특정 유형의 질문에 집중된 데이터셋을 사용하여 다양한 의료 문의에 대한 일관된 성능을 보장하지 못함. 향후 다양한 질문
+                        유형을 포함하는 데이터셋을 사용해 모델의 일반화를 검증할 계획.</li>
+                    <li><strong>응답 평가의 한계</strong>: 의료 전문가 대신 언어 모델을 통해 응답을 평가함으로써 임상적 정확성을 완전히 반영하지 못하는 한계가 있었음.</li>
+                </ul>
+
+                <p><strong>Demo</strong>: <a href="https://undoc.vercel.app">https://undoc.vercel.app</a></p>
+                <p><strong>Model</strong>: <a
+                        href="https://huggingface.co/devlim/Korea-HealthCare-RAFT-float16">https://huggingface.co/devlim/Korea-HealthCare-RAFT-float16</a>
+                </p>
             </div>
             <div class="image-row">
-                <div class="image-container">
-                    <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/undoc/1.png"
-                        alt="Horizontal image" />
-                </div>
                 <div class="vertical-images">
                     <img src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/refs/heads/main/undoc/2-%EC%88%98%EC%A0%95.png"
                         alt="Vertical image 1" />
@@ -564,16 +620,50 @@
         <!-- 패션 코디 추천 챗봇 연구 -->
         <div class="project-card">
             <div class="project-text">
-                <h3>패션 코디 추천 챗봇 연구 (2024.01 - 2024.07)</h3>
-                <p>본 연구에서는 RAG 시스템과 다중출처효과를 적용하여 패션 코디 추천 챗봇을 개발하고 평가하였습니다. 기존의 전자상거래 플랫폼은 주로 단일 챗봇과의 상호작용을 기반으로 운영되지만,
-                    본
-                    연구는 다중 챗봇을 활용한 상호작용이 더 나은 사용자 경험을 제공할 수 있는지 탐구하였습니다.</p>
-                <p>이를 위해 세 개의 챗봇이 사용자의 요청을 처리하는 다중 상호작용 시스템을 설계하고, 사용자 만족도, 사용 용이성, 유용성, 신뢰도 및 대화 참여 의사와 같은 다양한 측면에서 단일
-                    챗봇
-                    시스템과 비교 평가를 진행하였습니다. 연구 결과, 다중 챗봇 시스템이 사용자 만족도와 유용성에서 더 긍정적인 평가를 받았으며, 특히 사용자가 더욱 신뢰할 수 있는 시스템으로
-                    인식되었습니다. 다만, 친밀감과 개인화된 경험 제공 측면에서는 유의미한 차이가 나타나지 않았습니다.</p>
-                <p><strong>Technologies Used:</strong> GPT-4 API, Chroma DB (벡터 DB), Streamlit, Prompt Engineering, Data
-                    Crawling</p>
+                <h3><strong>패션 코디 추천 챗봇 연구</strong> (2024.01 - 2024.07)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    본 연구에서는 <strong>RAG 시스템</strong>과 <strong>다중출처효과</strong>를 적용하여
+                    패션 코디 추천 챗봇을 개발하고 평가하였습니다. 기존 전자상거래 플랫폼은 주로
+                    단일 챗봇과의 상호작용을 기반으로 운영되지만, 본 연구는 다중 챗봇을 활용한
+                    상호작용이 더 나은 사용자 경험을 제공할 수 있는지 탐구하였습니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
+                <ul>
+                    <li><strong>다중 챗봇 시스템 설계</strong>
+                        <ul>
+                            <li>세 개의 챗봇이 사용자의 요청을 처리하는 다중 상호작용 시스템을 설계.</li>
+                        </ul>
+                    </li>
+                    <li><strong>비교 평가 진행</strong>
+                        <ul>
+                            <li>사용자 만족도, 사용 용이성, 유용성, 신뢰도, 대화 참여 의사 등 다양한 측면에서 단일 챗봇 시스템과 다중 챗봇 시스템을 비교 평가.</li>
+                        </ul>
+                    </li>
+                    <li><strong>연구 결과 분석</strong>
+                        <ul>
+                            <li>다중 챗봇 시스템이 사용자 만족도와 유용성에서 더 긍정적인 평가를 받았으며, 신뢰도가 더 높다는 결과 도출.</li>
+                            <li>친밀감 및 개인화된 경험 제공 측면에서는 유의미한 차이가 없었음을 확인.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>언어 및 플랫폼</strong>: GPT-4 API</li>
+                    <li><strong>데이터베이스</strong>: Chroma DB (벡터 DB)</li>
+                    <li><strong>프레임워크 및 도구</strong>: Streamlit, Prompt Engineering</li>
+                    <li><strong>기타 기술</strong>: 데이터 크롤링</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>사용자 만족도 향상</strong>: 다중 챗봇 시스템이 단일 챗봇 시스템에 비해 더 높은 사용자 만족도와 유용성 점수를 기록.</li>
+                    <li><strong>신뢰도 향상</strong>: 다중 챗봇 시스템이 더 신뢰할 수 있는 시스템으로 인식됨.</li>
+                    <li><strong>친밀감 및 개인화 경험</strong>: 두 시스템 간에 유의미한 차이가 없었음.</li>
+                </ul>
             </div>
             <div class="image-row">
                 <div class="image-container-horizontal">
@@ -592,16 +682,48 @@
         <!-- ART QR Code 연구 -->
         <div class="project-card">
             <div class="project-text">
-                <h3>ART QR Code Generator 연구 (2023.09 - 2023.12)</h3>
-                <p>본 연구는 QR 코드를 예술적 매체로 재해석하는 새로운 방법론을 탐구합니다. 기존 연구들이 QR 코드의 실용성과 예술성 사이의 균형을 맞추지 못한 반면, 본 연구는 QR 코드의 본
-                    기능을
-                    유지하면서도 시각적 매력과 예술적 가치를 통합하는 접근법을 제안합니다.</p>
-                <p>이를 위해, 기존 QR 코드 및 이미지 생성 기술을 결합하여 'ART QR Code Generator'를 제안하였으며, 이는 예술적이면서도 실제로 인식 가능한 QR 코드를 생성하는
-                    데
-                    성공하였습니다. 본 연구는 디지털 이미지 제작 및 디자인 분야에 새로운 지평을 열며, QR 코드를 단순한 정보 전달 도구를 넘어 예술적 표현의 수단으로 변화시키는 데 중요한 기여를
-                    합니다.</p>
-                <p>이를 통해 예술과 기술의 융합을 통한 창의적인 창작물의 발전 가능성을 높이는 데 기여하고 있습니다.</p>
-                <p><strong>Technologies Used:</strong> Stable Diffusion, automatic web ui, prompt engineering
+                <h3><strong>ART QR Code Generator 연구</strong> (2023.09 - 2023.12)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    본 연구는 <strong>QR 코드</strong>를 예술적 매체로 재해석하는 새로운 방법론을 탐구하였습니다. 기존 연구들은 QR 코드의 실용성과 예술성 사이의 균형을 맞추는 데
+                    한계를 보였으나, 본 연구는 QR 코드의 본 기능을 유지하면서도 시각적 매력과 예술적 가치를 통합하는 접근법을 제안하였습니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
+                <ul>
+                    <li><strong>기술 결합</strong>
+                        <ul>
+                            <li>기존 QR 코드 생성 기술과 <strong>이미지 생성 기술</strong>을 결합하여 'ART QR Code Generator'를 개발.</li>
+                        </ul>
+                    </li>
+                    <li><strong>예술적 QR 코드 생성</strong>
+                        <ul>
+                            <li>예술적이면서도 인식 가능한 QR 코드를 생성하여 <strong>시각적 매력</strong>과 <strong>정보 전달 기능</strong>을 동시에 충족.
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>창의적 기여</strong>
+                        <ul>
+                            <li>본 연구는 QR 코드를 단순한 정보 전달 도구에서 <strong>예술적 표현 수단</strong>으로 변모시키며, 디지털 이미지 제작 및 디자인 분야에
+                                <strong>새로운 가능성</strong>을 제시.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>이미지 생성 모델</strong>: Stable Diffusion</li>
+                    <li><strong>UI</strong>: Automatic Web UI</li>
+                    <li><strong>기타 기술</strong>: Prompt Engineering</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>예술성과 기능성 통합</strong>: QR 코드의 정보 전달 기능을 유지하면서 예술적 가치를 부여한 코드 생성에 성공.</li>
+                    <li><strong>기술과 예술 융합</strong>: 기술과 예술의 융합을 통한 창의적 창작물의 발전 가능성 제시.</li>
+                </ul>
             </div>
             <div class="image-row">
                 <div class="image-container-horizontal">
@@ -616,16 +738,49 @@
         <!-- ChatGPT를 사용한 자동 프롬프트 최적화 연구 -->
         <div class="project-card">
             <div class="project-text">
-                <h3>ChatGPT를 사용한 자동 프롬프트 최적화: 태그 확장 및 Stable Diffusion을 통한 이미지 생성의 새로운 접근법 (2023.07 - 2023.08)</h3>
-                <p>본 논문은 태그 기반의 정보 검색을 향상시키고, 이미지 생성을 더 정확하고 효과적으로 수행하기 위한 새로운 접근법을 제안한다. 먼저, ELECTRA와 ChatGPT를 통합하여 주어진
-                    태그와
-                    관련된 태그를 자동으로 확장하며, 이를 사용자의 입력과 통합한다.</p>
-                <p>다음으로, 이 확장된 태그 세트를 이용하여 Stable Diffusion 모델로 이미지를 생성한다. 생성된 이미지는 'ImageReward' 모델로 평가되어 생성 품질을 정량적으로
-                    측정한다. 실험 결과, 제안된 방법은 기존 태그만을 사용하는 방법에 비해 더 다양하고 관련성 높은 이미지를 생성함을 확인하였다.</p>
-                <p>본 연구는 태그의 벡터 임베딩, 유사 태그 분석, 이미지 생성 및 평가의 과정을 통해 이미지 생성 작업을 자동화하고 최적화하는 새로운 방법론을 제시하며, 이는 텍스트에서 이미지로의
-                    전환을
-                    평가하고 개선하는 분야에 유의미한 기여를 할 것으로 예상된다.</p>
-                <p><strong>Technologies Used:</strong> ELECTRA, ChatGPT, Stable Diffusion</p>
+                <h3><strong>ChatGPT를 사용한 자동 프롬프트 최적화: 태그 확장 및 Stable Diffusion을 통한 이미지 생성의 새로운 접근법</strong> (2023.07 -
+                    2023.08)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    본 연구는 <strong>태그 기반 정보 검색</strong>을 향상시키고, <strong>이미지 생성</strong>을 더 정확하고 효과적으로 수행하기 위한 새로운 접근법을
+                    제안하였습니다.
+                    <strong>ELECTRA</strong>와 <strong>ChatGPT</strong>를 통합하여 주어진 태그와 관련된 태그를 자동으로 확장하고, 이를 사용자의 입력과 통합하여
+                    <strong>Stable Diffusion</strong> 모델로 이미지를 생성하는 방식입니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
+                <ul>
+                    <li><strong>태그 확장 및 자동화</strong>
+                        <ul>
+                            <li><strong>ELECTRA</strong>와 <strong>ChatGPT</strong>를 결합하여 주어진 태그와 관련된 태그를 자동 확장.</li>
+                        </ul>
+                    </li>
+                    <li><strong>이미지 생성 및 평가</strong>
+                        <ul>
+                            <li>확장된 태그 세트를 사용하여 <strong>Stable Diffusion</strong> 모델로 이미지를 생성.</li>
+                            <li>생성된 이미지의 품질을 <strong>ImageReward</strong> 모델로 정량적으로 평가.</li>
+                        </ul>
+                    </li>
+                    <li><strong>방법론 제시</strong>
+                        <ul>
+                            <li>태그 벡터 임베딩, 유사 태그 분석 및 이미지 평가를 통해 이미지 생성 작업의 <strong>자동화 및 최적화</strong>를 실현.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>언어 및 모델</strong>: ELECTRA, ChatGPT</li>
+                    <li><strong>이미지 생성 모델</strong>: Stable Diffusion</li>
+                    <li><strong>이미지 평가 모델</strong>: ImageReward</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>다양하고 관련성 높은 이미지 생성</strong>: 기존 태그만 사용하는 방법에 비해 더 다양한 이미지와 관련성 높은 이미지를 생성.</li>
+                    <li><strong>이미지 생성 작업의 최적화</strong>: 태그 확장 및 자동화를 통한 이미지 생성 과정의 개선으로 텍스트에서 이미지로의 전환 평가와 향상에 기여.</li>
+                </ul>
             </div>
             <div class="image-row">
                 <div class="image-container-horizontal">
@@ -640,14 +795,48 @@
         <!-- 메타버스 커뮤니케이션 서비스 연구 -->
         <div class="metaverse-project-card">
             <div class="metaverse-project-text">
-                <h3>메타버스 커뮤니케이션 서비스 (2022.06 - 2023.10)</h3>
-                <p>본 프로젝트는 <strong>메타버스 융합 대학원 정부 과제</strong>의 일환으로 진행되었으며, 가상공간에서 대화 생성 모델을 활용한 음성 커뮤니케이션 서비스와 방법을
-                    고안하여,
-                    사용자 간의 몰입도 높은 상호작용을 가능하게 하는 것을 목적으로 합니다. 사용자는 음성 대화를 통해 자연스럽게 상호작용하며, 이 과정에서 몰입감을 극대화하여 메타버스 내에서 실시간
-                    대화
-                    경험을 제공합니다.</p>
-                <p><strong>성과</strong>: 서강융합기술경진대회 우수상, 특허 출원 (10-2023-0133463)</p>
-                <p><strong>사용 기술</strong>: Unity, C#, Python, KoGPT2, ResNet, Google API</p>
+                <h3><strong>메타버스 커뮤니케이션 서비스</strong> (2022.06 - 2023.10)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    본 프로젝트는 <strong>메타버스 융합 대학원</strong> 정부 과제의 일환으로 진행되었으며,
+                    <strong>가상공간에서 대화 생성 모델</strong>을 활용한 음성 커뮤니케이션 서비스를 개발하였습니다.
+                    이 서비스를 통해 사용자 간 <strong>몰입감 높은 실시간 상호작용</strong>을 가능하게 하고, 메타버스 내에서 자연스러운 음성 대화를 경험할 수 있게 하였습니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
+                <ul>
+                    <li><strong>대화 생성 모델 개발</strong>
+                        <ul>
+                            <li>사용자 음성 데이터를 기반으로 한 자연스러운 상호작용을 위한 대화 생성 모델 설계 및 구현.</li>
+                        </ul>
+                    </li>
+                    <li><strong>음성 커뮤니케이션 서비스 개발</strong>
+                        <ul>
+                            <li><strong>ResNet</strong> 및 <strong>KoGPT2</strong> 모델을 활용하여 음성 대화를 실시간으로 처리하고, 이를 메타버스
+                                환경에 적용.</li>
+                        </ul>
+                    </li>
+                    <li><strong>시스템 설계 및 구현</strong>
+                        <ul>
+                            <li><strong>Unity</strong>와 <strong>C#</strong>을 사용하여 가상공간 내 실시간 상호작용 시스템 개발.</li>
+                            <li><strong>Google API</strong>를 이용한 음성 처리 및 변환 기능 통합.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>프레임워크 및 언어</strong>: Unity, C#</li>
+                    <li><strong>언어 및 모델</strong>: Python, KoGPT2, ResNet</li>
+                    <li><strong>API</strong>: Google API</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>우수상 수상</strong>: 서강융합기술경진대회에서 <strong>우수상</strong> 수상.</li>
+                    <li><strong>특허 출원</strong>: 대화 생성 모델 관련 <strong>특허 출원</strong> (10-2023-0133463).</li>
+                </ul>
             </div>
 
             <div class="metaverse-image-row">
@@ -675,12 +864,45 @@
         <!-- XR 디바이스 콘텐츠 아이디어 경진대회 -->
         <div class="project-card">
             <div class="project-text">
-                <h3>XR 디바이스 콘텐츠 아이디어 경진대회 (2022.10 - 2022.11)</h3>
-                <p>메타버스 프로젝트 워크샵에서 얻은 소통과 협업을 기반으로 ‘XR글라스로 1인칭 플레이 시점에서 악기를 인식해 원하는 음악을 선택하면 자동으로 운지법과 연주법을 표시해주는 콘텐츠
-                    제공. 이를 메타버스와 결합해 <strong>밴드 결성</strong> 및 자유로운 밴드 연주가 가능한 <strong>커뮤니티 서비스</strong>로 확장.’이라는 서비스를 제안
-                    및 프로토타입을 개발하여 해당 대회에 참여하여 좋은 성과를 얻었습니다.</p>
-                <p><strong>Related Article:</strong> <a href="https://www.sogang.ac.kr/ko/detail/542329"
-                        target="_blank">Sogang University Article</a></p>
+                <h3><strong>XR 디바이스 콘텐츠 아이디어 경진대회</strong> (2022.10 - 2022.11)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    <strong>메타버스 프로젝트 워크샵</strong>에서 얻은 소통과 협업을 바탕으로,
+                    <strong>XR 글라스</strong>를 사용하여 1인칭 시점에서 악기를 인식하고,
+                    원하는 음악을 선택하면 자동으로 <strong>운지법</strong>과 <strong>연주법</strong>을 표시해주는 콘텐츠를 제안하였습니다.
+                    이 콘텐츠는 <strong>메타버스</strong>와 결합하여 밴드를 결성하고, 자유로운 연주가 가능한 <strong>커뮤니티 서비스</strong>로 확장할 수 있는 아이디어를
+                    포함하였습니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
+                <ul>
+                    <li><strong>아이디어 제안</strong>
+                        <ul>
+                            <li>XR 글라스를 활용한 <strong>악기 인식 및 연주 보조 서비스</strong> 아이디어 제안.</li>
+                        </ul>
+                    </li>
+                    <li><strong>프로토타입 개발</strong>
+                        <ul>
+                            <li>제안된 아이디어를 바탕으로 <strong>프로토타입</strong> 개발.</li>
+                        </ul>
+                    </li>
+                    <li><strong>서비스 확장성 제시</strong>
+                        <ul>
+                            <li>메타버스 기반 밴드 결성과 자유로운 연주가 가능한 커뮤니티 서비스로 확장 가능성을 제시.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>대회 성과</strong>: 해당 경진대회에서 좋은 성과를 거둠.</li>
+                </ul>
+
+                <h3><strong>관련 기사</strong></h3>
+                <p>
+                    <a href="https://www.sogang.ac.kr/ko/detail/542329" target="_blank">Sogang University Article</a>
+                </p>
             </div>
             <div class="image-row">
                 <div class="image-container-horizontal">
@@ -694,55 +916,116 @@
 
 
 
-        <!-- 4876 프로젝트 (이미 포함된 코드) -->
+        <!-- 4876 프로젝트 -->
         <div class="project-card">
             <div class="project-text">
-                <h3>4876 (2021.6 - 2022.8)</h3>
-                <p><strong>중소벤처기업부</strong>: 2021년 생애최초 청년창업 지원 사업 선정</p>
+                <h3><strong>4876</strong> (2021.6 - 2022.8)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    <strong>중소벤처기업부</strong>의 <strong>2021년 생애최초 청년창업 지원 사업</strong>에 선정된 프로젝트로,
+                    <strong>연남동 AR 스튜디오</strong>를 두 명의 사진작가와 함께 창업하여 고객에게 <strong>혁신적인 AR 경험</strong>을 제공하는 포토 스튜디오를
+                    운영하였습니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
                 <ul>
-                    <li><strong>연남동 AR 스튜디오</strong>: 2명의 사진작가와 함께 창업, 고객에게 혁신적인 AR 경험을 제공하는 포토 스튜디오 운영.</li>
-                    <li><strong>AR 구현</strong>: <em>ar.js</em>를 사용하여 AR 기능을 개발하고 사용자 경험을 향상.</li>
-                    <li><strong>개인 URL 배포</strong>: 관리 페이지와 사용자 인터페이스를 구축하여 고객이 온라인에서 자신의 사진을 확인하고 상호작용할 수 있도록 개인 URL 배포
-                        기능 개발.</li>
-                    <li><strong>기술 스택</strong>: <em>Node.js</em>와 <em>MySQL</em>을 사용해 사용자 데이터와 AR 자산을 관리하는 백엔드 시스템을 구현.
+                    <li><strong>AR 기능 개발</strong>
+                        <ul>
+                            <li><strong>ar.js</strong>를 사용하여 스튜디오에 적용할 AR 기능을 개발, 사용자 경험을 향상시킴.</li>
+                        </ul>
                     </li>
+                    <li><strong>개인 URL 배포 시스템 구축</strong>
+                        <ul>
+                            <li>고객이 온라인에서 자신의 사진을 확인하고 상호작용할 수 있도록 <strong>관리 페이지</strong>와 <strong>사용자 인터페이스</strong>를
+                                구축.</li>
+                            <li>고객별 <strong>개인 URL 배포</strong> 기능을 개발.</li>
+                        </ul>
+                    </li>
+                    <li><strong>백엔드 시스템 구현</strong>
+                        <ul>
+                            <li><strong>Node.js</strong>와 <strong>MySQL</strong>을 사용하여 사용자 데이터와 AR 자산을 관리하는 <strong>백엔드
+                                    시스템</strong>을 구현.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>프레임워크 및 언어</strong>: Node.js, ar.js</li>
+                    <li><strong>데이터베이스</strong>: MySQL</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li><strong>청년창업 지원 사업</strong>에 선정되어, <strong>혁신적인 AR 경험</strong>을 제공하는 포토 스튜디오를 운영.</li>
                 </ul>
             </div>
             <div class="video-row">
                 <div class="video-container">
-                    <video id="video1" muted>
+                    <video id="video1" autoplay loop muted playsinline>
                         <source
                             src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/4876/4876_1.mp4"
                             type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <button id="play-button1">Play</button>
                 </div>
                 <div class="video-container">
-                    <video id="video2" muted>
+                    <video id="video2" autoplay loop muted playsinline>
                         <source
                             src="https://raw.githubusercontent.com/Lim-YoungYoon/Lim-YoungYoon.github.io/main/4876/4876_2.mp4"
                             type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <button id="play-button2">Play</button>
                 </div>
             </div>
         </div>
 
 
+
+
         <!-- AR Shop -->
         <div class="arshop-project-card">
             <div class="arshop-project-text">
-                <h3>AR Shop (2020.08-2020.12)</h3>
-                <p>Used augmented reality to create an effect similar to what you actually wore.</p>
-                <p>AR Service: <strong>Main, Product, Cart</strong></p>
-                <p><strong>Technologies Used:</strong></p>
+                <h3><strong>AR Shop</strong> (2020.08 - 2020.12)</h3>
+
+                <h3><strong>프로젝트 개요</strong></h3>
+                <p>
+                    본 프로젝트는 <strong>증강 현실(AR)</strong>을 활용하여 사용자가 제품을 실제로 착용한 것과 유사한 효과를 경험할 수 있도록 하는 <strong>가상 착용
+                        서비스</strong>를 개발하였습니다. 이를 통해 고객이 <strong>제품 시각화</strong> 및 <strong>가상 쇼핑</strong>을 체험할 수 있는 기능을
+                    제공하였습니다.
+                </p>
+
+                <h3><strong>본인의 역할 및 기여</strong></h3>
                 <ul>
-                    <li>Flutter 1.12.13</li>
-                    <li>Dart 2.7.2</li>
-                    <li>ARCore Unity SDK v1.17.0</li>
-                    <li>Firebase</li>
+                    <li><strong>AR 서비스 설계 및 구현</strong>
+                        <ul>
+                            <li>제품 시각화를 위한 <strong>AR 서비스</strong>를 개발하고, <strong>메인 화면</strong>, <strong>제품 상세
+                                    화면</strong>, <strong>장바구니 화면</strong>을 포함한 쇼핑 플로우를 구현.</li>
+                        </ul>
+                    </li>
+                    <li><strong>증강 현실 기능 개발</strong>
+                        <ul>
+                            <li><strong>ARCore Unity SDK</strong>를 사용하여 제품의 <strong>가상 착용 효과</strong>를 현실감 있게 구현.</li>
+                        </ul>
+                    </li>
+                    <li><strong>백엔드 및 데이터 관리</strong>
+                        <ul>
+                            <li><strong>Firebase</strong>를 사용하여 제품 데이터와 사용자 정보를 관리 및 연동.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3><strong>사용 기술/지식/프로그램</strong></h3>
+                <ul>
+                    <li><strong>프레임워크 및 언어</strong>: Flutter (1.12.13), Dart (2.7.2)</li>
+                    <li><strong>AR 개발</strong>: ARCore Unity SDK (v1.17.0)</li>
+                    <li><strong>데이터베이스</strong>: Firebase</li>
+                </ul>
+
+                <h3><strong>결과 및 성과</strong></h3>
+                <ul>
+                    <li>사용자가 <strong>AR 기술</strong>을 통해 제품을 가상으로 착용하고, 쇼핑 경험을 개선하는 서비스를 구현함.</li>
                 </ul>
             </div>
             <div class="arshop-image-grid">
@@ -756,6 +1039,7 @@
                     alt="AR Shop Image 4" />
             </div>
         </div>
+
     </section>
 
     <section id="experience" class="experience-section">
