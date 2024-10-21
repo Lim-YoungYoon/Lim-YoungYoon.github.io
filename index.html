@@ -14,6 +14,13 @@
             background-color: #e2e2e2;
         }
 
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         header,
         section,
         footer {
@@ -493,6 +500,15 @@
         }
     </style>
 </head>
+<script>
+    window.onload = function () {
+        // 창 높이의 70%를 계산하고 body 높이에 적용
+        let windowHeight = window.innerHeight;
+        let height70Percent = windowHeight * 0.7;
+
+        document.body.style.height = height70Percent + 'px';
+    };
+</script>
 
 <body>
 
