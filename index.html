@@ -12,6 +12,10 @@
             padding: 0;
             line-height: 1.6;
             background-color: #e2e2e2;
+            transform: scale(0.8);
+            /* 화면을 70%로 줄이기 */
+            transform-origin: top center;
+            /* 축소 기준점 설정 */
         }
 
         body,
@@ -500,18 +504,18 @@
         }
     </style>
 </head>
-<script>
-    window.onload = function () {
-        // 창 높이의 70%를 계산하고 body 높이에 적용
-        let windowHeight = window.innerHeight;
-        let height70Percent = windowHeight * 0.7;
 
-        document.body.style.height = height70Percent + 'px';
-    };
-</script>
 
 <body>
+    <script>
+        window.onload = function () {
+            // 창 높이의 70%를 계산하고 body 높이에 적용
+            let windowHeight = window.innerHeight;
+            let height70Percent = windowHeight * 0.7;
 
+            document.body.style.height = height70Percent + 'px';
+        };
+    </script>
     <nav>
         <a href="#about">소개</a>
         <a href="#projects">프로젝트</a>
@@ -624,7 +628,7 @@
                     </div>
                 </div>
 
-                <p><strong>Demo</strong>: <a href="https://undoc.vercel.app">https://undoc.vercel.app</a></p>
+                <!--<p><strong>Demo</strong>: <a href="https://undoc.vercel.app">https://undoc.vercel.app</a></p>-->
                 <p><strong>Model</strong>: <a
                         href="https://huggingface.co/devlim/Korea-HealthCare-RAFT-float16">https://huggingface.co/devlim/Korea-HealthCare-RAFT-float16</a>
                 </p>
